@@ -1,83 +1,96 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <title>تایمر معکوس - تا مهری متفاوت</title>
-    <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: #fff;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; 
-        }
-        h1 {
-            font-size: 2.5em; 
-            margin-bottom: 30px;
-        }
-        #timer {
-            font-size: 2.5em;
-            background: rgba(0,0,0,0.4);
-            padding: 30px 40px;
-            border-radius: 20px;
-            display: inline-block;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-        .finished {
-            font-size: 2em;
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-        .name {
-            display: block;   /* برای رفتن به خط بعد */
-            font-size: 2.2em;
-            font-weight: bold;
-            color: gold;      /* رنگ متفاوت */
-            text-shadow: 0 0 10px rgba(255,215,0,0.8);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>تایمر معکوس - تا مهری متفاوت</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #fff;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    #timer {
+      display: flex;
+      gap: 20px;
+      background: rgba(0,0,0,0.4);
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .time-box {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .label {
+      display: block;
+      font-size: 0.7em;
+      margin-top: 8px;
+      color: #ffd700;
+    }
+    .finished {
+      font-size: 2em;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+    .name {
+      display: block;
+      font-size: 2.2em;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
+    }
+  </style>
 </head>
 <body>
-    <h1>شمارش معکوس تا اول مهر ۱۴۰۴<br>(مهری متفاوت را برای شما آرزومندم)</h1>
-    <div id="timer">...</div>
+  <h1>شمارش معکوس تا اول مهر ۱۴۰۴<br>(مهری متفاوت را برای شما آرزومندم)</h1>
+  <div id="timer">...</div>
 
-    <script>
-        // تاریخ مقصد: ۱ مهر ۱۴۰۴ (۲۳ سپتامبر ۲۰۲۵ - ساعت ۸:۰۰ به وقت ایران)
-        const countdownDate = new Date(Date.UTC(2025, 8, 23, 4, 30, 0)).getTime();
+  <script>
+    // تاریخ مقصد: ۱ مهر ۱۴۰۴ (۲۳ سپتامبر ۲۰۲۵ - ساعت ۸:۰۰ به وقت ایران)
+    const countdownDate = new Date(Date.UTC(2025, 8, 23, 4, 30, 0)).getTime();
 
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
 
-            if (distance < 0) {
-                document.getElementById("timer").innerHTML = `
-                    <div class="finished">
-                        شروع مهری متفاوت را به شما تبریک می‌گویم 🎉
-                        <span class="name">یاورزاده</span>
-                    </div>`;
-                return;
-            }
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = `
+          <div class="finished">
+            شروع مهری متفاوت را به شما تبریک می‌گویم 🎉
+            <span class="name">یاورزاده</span>
+          </div>`;
+        return;
+      }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("timer").innerHTML =
-                
-                days + " روز " + " : " +
-                hours + " ساعت " + " : " +
-                minutes + " دقیقه " + " : " +
-                seconds + " ثانیه ";
-        }
+      document.getElementById("timer").innerHTML = `
+        <div class="time-box">${days}<span class="label">روز</span></div>
+        <div class="time-box">${hours}<span class="label">ساعت</span></div>
+        <div class="time-box">${minutes}<span class="label">دقیقه</span></div>
+        <div class="time-box">${seconds}<span class="label">ثانیه</span></div>
+      `;
+    }
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
 </body>
 </html>
