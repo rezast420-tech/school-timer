@@ -2,21 +2,64 @@
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Timer</title>
+    <title>تایمر معکوس - اول مهر</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background: #f0f8ff; }
-        h1 { color: #2c3e50; }
-        a { text-decoration: none; color: #2980b9; font-weight: bold; font-size: 18px; margin: 10px; display: inline-block; }
-        .container { max-width: 600px; margin: auto; padding: 20px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        body {
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 { font-size: 2em; margin-bottom: 20px; }
+        #timer {
+            font-size: 2em;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>سلام! اپلیکیشن School Timer</h1>
-        <p>این اپلیکیشن با Flask و Gunicorn روی Render.com اجرا شده است.</p>
-        <a href="/about">درباره ما</a>
-        <a href="/timer">تایمر شمارش معکوس</a>
-    </div>
+    <h1>شمارش معکوس تا اول مهر ساعت ۸ صبح</h1>
+    <div id="timer">...</div>
+
+    <script>
+        // محاسبه تاریخ ۱ مهر امسال
+        const now = new Date();
+        let targetYear = now.getFullYear();
+        const targetDate = new Date(targetYear, 8, 22, 8, 0, 0); // ماه‌ها از ۰ شروع می‌شود → ۸ = مهر
+
+        // اگر امروز بعد از ۱ مهر امسال باشیم → برای سال بعد تنظیم کن
+        if (now > targetDate) {
+            targetYear += 1;
+        }
+        const countdownDate = new Date(targetYear, 8, 22, 8, 0, 0);
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                document.getElementById("timer").innerHTML = "زمان به پایان رسید 🎉";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML =
+                days + " روز " + hours + " ساعت " + minutes + " دقیقه " + seconds + " ثانیه ";
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer(); // اجرا در لحظه اول
+    </script>
 </body>
 </html>
