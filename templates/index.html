@@ -52,9 +52,13 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("timer").innerHTML =
-                days + " روز " + hours + " ساعت " + minutes + " دقیقه " + seconds + " ثانیه ";
-        }
+            // ترتیب درست نمایش
+        document.getElementById("timer").innerHTML =
+            days + " روز " + " : " +
+            hours + " ساعت " + " : " +
+            minutes + " دقیقه " + " : " +
+            seconds + " ثانیه ";
+    }
 
         setInterval(updateTimer, 1000);
         updateTimer();
