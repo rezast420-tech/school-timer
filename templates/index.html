@@ -18,10 +18,12 @@
       justify-content: center;
       align-items: center;
     }
+
     h1 {
       font-size: 2.5em;
       margin-bottom: 30px;
     }
+
     #timer {
       display: flex;
       gap: 20px;
@@ -30,34 +32,42 @@
       border-radius: 20px;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
+
     .time-box {
       text-align: center;
       font-size: 2em;
       font-weight: bold;
     }
+
     .label {
       display: block;
       font-size: 0.7em;
       margin-top: 8px;
       color: #ffd700;
     }
+
     .finished {
       font-size: 2em;
       margin-top: 20px;
       line-height: 1.8;
     }
+
+    /* کلمه یاورزاده زیر تایمر و کوچکتر */
     .name {
       display: block;
-      font-size: 2.2em;
+      font-size: 1.5em; /* کوچکتر از تایمر */
       font-weight: bold;
       color: gold;
-      text-shadow: 0 0 10px rgba(255,215,0,0.8);
+      text-shadow: 0 0 8px rgba(255,215,0,0.8);
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
   <h1>شمارش معکوس تا اول مهر ۱۴۰۴<br>(مهری متفاوت را برای شما آرزومندم)</h1>
+
   <div id="timer">...</div>
+  <span class="name">یاورزاده</span>
 
   <script>
     // تاریخ مقصد: ۱ مهر ۱۴۰۴ (۲۳ سپتامبر ۲۰۲۵ - ساعت ۸:۰۰ به وقت ایران)
@@ -70,8 +80,7 @@
       if (distance < 0) {
         document.getElementById("timer").innerHTML = `
           <div class="finished">
-            شروع مهری متفاوت را به شما تبریک می‌گویم 🎉
-            <span class="name">یاورزاده</span>
+            مهر متفاوت آغاز فصل تازه با تلاش وامید نوهمراه با همدلی 🎉
           </div>`;
         return;
       }
