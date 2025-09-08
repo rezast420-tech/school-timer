@@ -10,42 +10,40 @@
             background: linear-gradient(135deg, #4facfe, #00f2fe);
             color: #fff;
             height: 100vh;
+            margin: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center; /* برای وسط‌چین افقی */
         }
-        h1 { font-size: 2em; margin-bottom: 20px; }
+        h1 {
+            font-size: 2.5em; 
+            margin-bottom: 30px;
+        }
         #timer {
-            font-size: 2em;
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 15px;
+            font-size: 3em;   /* فونت درشت‌تر */
+            background: rgba(0,0,0,0.4);
+            padding: 30px 40px;
+            border-radius: 20px;
             display: inline-block;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
-    <h1>شمارش معکوس تا اول مهر ساعت ۸ صبح</h1>
+    <h1>شمارش معکوس تا اول مهر ۱۴۰۴<br>(۲۳ سپتامبر ۲۰۲۵ - ساعت ۸ صبح)</h1>
     <div id="timer">...</div>
 
     <script>
-        // محاسبه تاریخ ۱ مهر امسال
-        const now = new Date();
-        let targetYear = now.getFullYear();
-        const targetDate = new Date(targetYear, 8, 22, 8, 0, 0); // ماه‌ها از ۰ شروع می‌شود → ۸ = مهر
-
-        // اگر امروز بعد از ۱ مهر امسال باشیم → برای سال بعد تنظیم کن
-        if (now > targetDate) {
-            targetYear += 1;
-        }
-        const countdownDate = new Date(targetYear, 8, 22, 8, 0, 0);
+        // تاریخ مقصد: ۲۳ سپتامبر ۲۰۲۵ ساعت ۰۸:۰۰
+        const countdownDate = new Date("2025-09-23T08:00:00").getTime();
 
         function updateTimer() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
 
             if (distance < 0) {
-                document.getElementById("timer").innerHTML = "زمان به پایان رسید 🎉";
+                document.getElementById("timer").innerHTML = "شروع مهری متفاوت را به شما تبریک می گویم.یاورزاده 🎉";
                 return;
             }
 
@@ -59,7 +57,7 @@
         }
 
         setInterval(updateTimer, 1000);
-        updateTimer(); // اجرا در لحظه اول
+        updateTimer();
     </script>
 </body>
 </html>
