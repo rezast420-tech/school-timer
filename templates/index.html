@@ -34,13 +34,13 @@
     <h1>شمارش معکوس تا اول مهر ۱۴۰۴<br>(  مهری متفاوت را برای شما آرزومندم.یاورزاده.   )</h1>
     <div id="timer">...</div>
 
-    <script>
-        // تاریخ مقصد: ۲۳ سپتامبر ۲۰۲۵ ساعت ۰۸:۰۰
-        const countdownDate = new Date("2025-09-23T08:00:00").getTime();
+   <script>
+    // تاریخ مقصد: ۱ مهر ۱۴۰۴ (۲۳ سپتامبر ۲۰۲۵ - ساعت ۸:۰۰ به وقت ایران)
+    const countdownDate = new Date(Date.UTC(2025, 8, 23, 4, 30, 0)).getTime();
 
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
 
             if (distance < 0) {
                 document.getElementById("timer").innerHTML = "شروع مهری متفاوت را به شما تبریک می گویم.یاورزاده 🎉";
