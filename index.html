@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>شمارش معکوس اول مهر ۱۴۰۵</title>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    background: #eaf6ff;
+}
+
+.box {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 30px 15px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+.school {
+    font-size: 30px;
+    font-weight: bold;
+
+    color: #1769aa;
+
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 23px;
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    color: #333;
+}
+
+
+/* =========================
+   HOURGLASS
+========================= */
+
+.hourglass {
+    width: 110px;
+    height: 150px;
+
+    position: relative;
+
+    margin: 10px auto 30px;
+}
+
+
+/* قاب بالا */
+
+.top {
+    position: absolute;
+
+    top: 5px;
+    left: 5px;
+
+    width: 100px;
+    height: 65px;
+
+    border: 5px solid #555;
+
+    background: #f8f8f8;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        60% 100%,
+        40% 100%
+    );
+}
+
+
+/* قاب پایین */
+
+.bottom {
+    position: absolute;
+
+    bottom: 5px;
+    left: 5px;
+
+    width: 100px;
+    height: 65px;
+
+    border: 5px solid #555;
+
+    background: #f8f8f8;
+
+    clip-path: polygon(
+        40% 0,
+        60% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* شن بالای ساعت */
+
+.sand-top {
+    position: absolute;
+
+    top: 15px;
+    left: 25px;
+
+    width: 60px;
+    height: 50px;
+
+    background: #e3aa32;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        60% 100%,
+        40% 100%
+    );
+
+    animation: topSand 4s linear infinite;
+}
+
+
+/* شن پایین */
+
+.sand-bottom {
+    position: absolute;
+
+    bottom: 15px;
+    left: 25px;
+
+    width: 60px;
+    height: 5px;
+
+    background: #e3aa32;
+
+    clip-path: polygon(
+        40% 0,
+        60% 0,
+        100% 100%,
+        0 100%
+    );
+
+    animation: bottomSand 4s linear infinite;
+}
+
+
+/* جریان شن */
+
+.stream {
+    position: absolute;
+
+    top: 63px;
+    left: 53px;
+
+    width: 4px;
+    height: 40px;
+
+    background: #e3aa32;
+
+    border-radius: 5px;
+
+    animation: stream 4s linear infinite;
+}
+
+
+/* دانه های شن */
+
+.grain {
+    position: absolute;
+
+    top: 65px;
+    left: 52px;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #c99120;
+
+    animation: grain 1s linear infinite;
+}
+
+.grain2 {
+    animation-delay: 0.3s;
+}
+
+.grain3 {
+    animation-delay: 0.6s;
+}
+
+
+/* پایه بالا */
+
+.hourglass:before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 110px;
+    height: 8px;
+
+    background: #444;
+
+    border-radius: 5px;
+}
+
+
+/* پایه پایین */
+
+.hourglass:after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 110px;
+    height: 8px;
+
+    background: #444;
+
+    border-radius: 5px;
+}
+
+
+/* انیمیشن شن بالا */
+
+@keyframes topSand {
+
+    0% {
+        height: 50px;
+    }
+
+    85% {
+        height: 7px;
+    }
+
+    100% {
+        height: 50px;
+    }
+}
+
+
+/* انیمیشن شن پایین */
+
+@keyframes bottomSand {
+
+    0% {
+        height: 5px;
+    }
+
+    85% {
+        height: 50px;
+    }
+
+    100% {
+        height: 5px;
+    }
+}
+
+
+/* انیمیشن جریان */
+
+@keyframes stream {
+
+    0% {
+        opacity: 0;
+        height: 5px;
+    }
+
+    15% {
+        opacity: 1;
+        height: 40px;
+    }
+
+    85% {
+        opacity: 1;
+        height: 40px;
+    }
+
+    100% {
+        opacity: 0;
+        height: 5px;
+    }
+}
+
+
+/* انیمیشن دانه */
+
+@keyframes grain {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.item {
+
+    background: #eef7fc;
+
+    border-radius: 15px;
+
+    padding: 15px 5px;
+}
+
+
+.number {
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    color: #1769aa;
+
+    direction: ltr;
+}
+
+
+.label {
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+    color: #444;
+}
+
+
+.info {
+
+    margin-top: 25px;
+
+    line-height: 2;
+
+    font-size: 15px;
+
+    color: #555;
+}
+
+
+.finished {
+
+    display: none;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    color: #16834b;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .box {
+        padding: 25px 10px;
+    }
+
+    .school {
+        font-size: 25px;
+    }
+
+    .title {
+        font-size: 19px;
+    }
+
+    .number {
+        font-size: 26px;
+    }
+
+    .label {
+        font-size: 12px;
+    }
+
+    .item {
+        padding: 12px 3px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+    <div class="school">
+        دبستان شقایق
+    </div>
+
+
+    <div class="title">
+        شمارش معکوس تا اول مهر ۱۴۰۵
+    </div>
+
+
+    <!-- ساعت شنی -->
+
+    <div class="hourglass">
+
+        <div class="top"></div>
+
+        <div class="bottom"></div>
+
+        <div class="sand-top"></div>
+
+        <div class="sand-bottom"></div>
+
+        <div class="stream"></div>
+
+        <div class="grain"></div>
+
+        <div class="grain grain2"></div>
+
+        <div class="grain grain3"></div>
+
+    </div>
+
+
+    <!-- شمارش معکوس -->
+
+    <div class="countdown">
+
+
+        <div class="item">
+
+            <div id="days"
+                 class="number">
+                ۰۰
+            </div>
+
+            <div class="label">
+                روز
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div id="hours"
+                 class="number">
+                ۰۰
+            </div>
+
+            <div class="label">
+                ساعت
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div id="minutes"
+                 class="number">
+                ۰۰
+            </div>
+
+            <div class="label">
+                دقیقه
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div id="seconds"
+                 class="number">
+                ۰۰
+            </div>
+
+            <div class="label">
+                ثانیه
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div id="finished"
+         class="finished">
+
+        🎉 اول مهر فرا رسید!
+
+    </div>
+
+
+    <div class="info">
+
+        آغاز فعالیت مدرسه:
+
+        <strong>
+            ساعت ۷:۳۰ صبح
+        </strong>
+
+        <br>
+
+        چهارشنبه ۱ مهر ۱۴۰۵
+
+        <br>
+
+        مدیریت دبستان شقایق
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/*
+========================================
+اول مهر ۱۴۰۵
+۲۳ سپتامبر ۲۰۲۶
+ساعت ۷:۳۰ صبح به وقت ایران
+========================================
+*/
+
+
+const target =
+    new Date("2026-09-23T07:30:00+03:30").getTime();
+
+
+/* تبدیل اعداد انگلیسی به فارسی */
+
+function persianNumber(number) {
+
+    return String(number).replace(
+        /\d/g,
+        function(digit) {
+
+            return "۰۱۲۳۴۵۶۷۸۹"[digit];
+
+        }
+    );
+
+}
+
+
+/* به روز کردن شمارش */
+
+function updateCountdown() {
+
+
+    const now =
+        new Date().getTime();
+
+
+    const distance =
+        target - now;
+
+
+    /* اگر زمان تمام شده باشد */
+
+    if (distance <= 0) {
+
+
+        document.getElementById("days")
+            .innerText = "۰";
+
+
+        document.getElementById("hours")
+            .innerText = "۰۰";
+
+
+        document.getElementById("minutes")
+            .innerText = "۰۰";
+
+
+        document.getElementById("seconds")
+            .innerText = "۰۰";
+
+
+        document.getElementById("finished")
+            .style.display = "block";
+
+
+        return;
+
+    }
+
+
+    /* محاسبه روز */
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    /* محاسبه ساعت */
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+
+    /* محاسبه دقیقه */
+
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+
+    /* محاسبه ثانیه */
+
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000 * 60))
+            /
+            1000
+        );
+
+
+    /* نمایش */
+
+    document.getElementById("days")
+        .innerText =
+        persianNumber(days);
+
+
+    document.getElementById("hours")
+        .innerText =
+        persianNumber(
+            String(hours).padStart(2, "0")
+        );
+
+
+    document.getElementById("minutes")
+        .innerText =
+        persianNumber(
+            String(minutes).padStart(2, "0")
+        );
+
+
+    document.getElementById("seconds")
+        .innerText =
+        persianNumber(
+            String(seconds).padStart(2, "0")
+        );
+
+}
+
+
+/* اجرای اولیه */
+
+updateCountdown();
+
+
+/* به روز شدن هر یک ثانیه */
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+</script>
+
+
+</body>
+
+</html>
